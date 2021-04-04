@@ -2,6 +2,18 @@
     height: 3rem;
     background: white;
     display: flex;
+    position: sticky;
+    top: 0;
+    -webkit-box-shadow: 3px 3px 5px 6px #000;
+    -moz-box-shadow: 3px 3px 5px 6px #ccc;
+    box-shadow: 3px -2px 14px -2px #000;
+    width: 100%;
+    z-index: 20;
+    padding-left: 3rem;
+    align-items: center;
+}
+.navbar h2{
+    cursor: pointer;
 }
 .navbar div{
     

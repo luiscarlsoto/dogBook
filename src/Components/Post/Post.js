@@ -1,13 +1,13 @@
 import React from 'react'
 import './Post.css'
-import { FaRegComment, FaRegHeart } from 'react-icons/fa';
+import { FaRegComment, FaRegHeart, FaLink } from 'react-icons/fa';
 const Post = (props) => {
     return (
         <div className="post">
             <div className="post-header">
                 <div className="post-header-button" onClick={() => props.showProfile(props.owner.id)}>
                     <div className="post-header-img">
-                        <img src={props.owner.picture}/>
+                        <img alt={props.id} src={props.owner.picture}/>
                     </div>
                     <div className="post-header-name">
                         {`${props.owner.firstName} ${props.owner.lastName}`}
@@ -27,7 +27,7 @@ const Post = (props) => {
                     <div className="post-img-likes">{props.likes} likes</div>
                     <div className="post-text">
                         {props.text}<br/>
-                        <a href={props.link}>{props.link}</a>
+                        {!props.link == "" ? <a href={props.link}><FaLink className="linkIcon"/>{props.link}</a> : null}
                     </div>
                     <div className="post-tags">
                         {props.tags.map(tag =>(

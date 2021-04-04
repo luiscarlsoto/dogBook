@@ -2,9 +2,11 @@
     margin: 0;
     padding: 0;
 }
+body{
+    overflow-y: overlay;
+}
 
 .app{
-    min-height: 100vh;
     background: #f4f4f4;
     font-family: system-ui;
 }
@@ -13,4 +15,9 @@
 }
 .disable {
     display: block;
+}
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -4,15 +4,33 @@ import {Loading} from '../../assets/spinner'
 import { getPost } from '../../services/post'
 import { getUser } from '../../services/user'
 import Profile from '../Profile/Profile'
+import NavBar from '../NavBar/NavBar'
+
 import './DashBoard.css'
 const DashBoard = () => {
     const [loading, setLoading] = useState(true)
     const [data, setData] = useState([]);
-    const [profile, setProfile] = useState("")
-
+    const [modalProfile, setModalProfile] = useState(false)
+    const [dataProfile, setProfile] = useState([])
+    
     const showProfile = async (id) =>{
-        let response = await getUser(id)
-        setProfile(response)
+      setLoading(true)
+      document.body.style.overflowY = 'hidden'
+      try{
+        let dataProfile = await getUser(id)
+        setProfile(dataProfile)
+      } catch(error) {
+        console.error(error)
+      }
+        finally{
+          setModalProfile(true)
+          setLoading(false);
+        }
+    }  
+    const closeModal = () =>{
+      setModalProfile(false)
+      setProfile([])
+      document.body.style.overflowY = 'overlay'
     }
     const searchTag = (tag) =>{
       console.log(tag)
@@ -22,7 +40,6 @@ const DashBoard = () => {
     }
     const getData = async () =>{
         try{
-            console.log("cargando...")
           setLoading(true)
           let response =  await getPost()
           setData(response)
@@ -40,8 +57,11 @@ const DashBoard = () => {
 
     return (
         <div className="dashboard">
+            <NavBar/>
+
              {loading && <Loading/> }
-             {data.map(post =>(<Post showProfile={showProfile} searchTag={searchTag} {...post}/>))}
+             {modalProfile ? <Profile closeModal={closeModal} {...dataProfile}/> : null}
+             {data.map(post =>(<Post key={data.id} showProfile={showProfile} searchTag={searchTag} {...post}/>))}
         </div>
 )}
 

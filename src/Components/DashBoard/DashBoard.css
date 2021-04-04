@@ -2,4 +2,11 @@
     justify-content: center;
     display: flex;
     flex-wrap: wrap;
+    position: absolute;
+    min-width: 100vw;
+
+}
+.dashboard.modal-open{
+    max-height: 100vh;
+    overflow: hidden;
 }

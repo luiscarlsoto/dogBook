@@ -78,3 +78,18 @@
     font-weight: bolder;
     cursor: pointer;
 }
+a{
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    width: 18rem;
+    overflow: hidden;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #3fbeb1;
+}
+a>svg{
+    font-size: 0.8rem;
+    margin-right: 0.2rem;
+}

@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import Post from '../Post/Post'
 import {Loading} from '../../assets/spinner'
-import { getPost } from '../../services/post'
+import { getPost, getPostTag } from '../../services/post'
 import { getUser } from '../../services/user'
 import Profile from '../Profile/Profile'
 import NavBar from '../NavBar/NavBar'
 
 import './DashBoard.css'
-const DashBoard = () => {
+const DashBoard = (props) => {
     const [loading, setLoading] = useState(true)
     const [data, setData] = useState([]);
     const [modalProfile, setModalProfile] = useState(false)
     const [dataProfile, setProfile] = useState([])
-    
+
     const showProfile = async (id) =>{
       setLoading(true)
       document.body.style.overflowY = 'hidden'
@@ -32,15 +32,21 @@ const DashBoard = () => {
       setProfile([])
       document.body.style.overflowY = 'overlay'
     }
-    const searchTag = (tag) =>{
-      console.log(tag)
-      let filter = data.filter((post) => {return post.tags.indexOf(tag) > -1})
-      console.log(filter)
-      setData(filter)
-    }
+    const searchTag = async() =>{
+      setLoading(true)
+      try{
+        let response =  await getPostTag(props.match.params.tag)
+        setData(response)
+      } catch(error) {
+        console.error(error)
+      }
+        finally{
+          setLoading(false);
+        }
+    }    
     const getData = async () =>{
+        setLoading(true)
         try{
-          setLoading(true)
           let response =  await getPost()
           setData(response)
         } catch(error) {
@@ -50,10 +56,8 @@ const DashBoard = () => {
             setLoading(false);
           }
       }    
-      useEffect(() => {
-          console.log("Sucede")
-        getData()
-        }, []);
+      useEffect(() => {getData()}, []);
+      useEffect(() => {searchTag()}, [props.match.params.tag]);// eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <div className="dashboard">

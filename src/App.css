@@ -21,3 +21,7 @@ body{
     justify-content: center;
     align-items: center;
 }
+img{
+    background: url(https://upload.wikimedia.org/wikipedia/commons/4/42/Loading.gif) no-repeat center;
+
+}

@@ -1,16 +1,29 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import './Profile.css'
-import { FaTimes, FaUserAlt, FaEnvelope, FaVenusMars, FaBirthdayCake } from "react-icons/fa";
+import { FaUserAlt, FaEnvelope, FaVenusMars, FaBirthdayCake } from "react-icons/fa";
+import { getUserPosts } from '../../services/user'
 
 const Profile = (props) => {
-    console.log(props)
+    const [photos, setPhotos] = useState([])
+    const getPhotos = async() =>{
+        try{
+          let response =  await getUserPosts(props.id)
+          setPhotos(response)
+        } catch(error) {
+          console.error(error)
+        }
+          finally{
+          }
+      }    
+    useEffect(() => {
+        getPhotos()
+      });
+
     return (
         <div className="content-profile background-blur center">
             <div className="profile-card center">
-                <div onClick={props.closeModal} className="close-button2"><FaTimes/></div>
-                <div className="profile-content">
                     <div className="profile-img center">
-                        <img src={props.picture}/>
+                        <img alt={props.id} src={props.picture}/>
                     </div>
                     <div className="profile-info">
                         <div className="profile-name">
@@ -31,13 +44,14 @@ const Profile = (props) => {
                         </div>
                     </div>
                     <div className="profile-posts">
-                        
+                        <div className="user-posts">
+                            {photos.map(photo => (<img alt={photo.id} src={photo.image}/>))}
+                        </div>
                     </div>
                     <div className="profile-buttons">
                         <div onClick={props.closeModal} className="close-button">Close</div>
                     </div>
                 </div>
-            </div>        
 
         </div>
     )

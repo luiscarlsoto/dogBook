@@ -1,13 +1,21 @@
 import React from "react";
-import NavBar from './Components/NavBar/NavBar'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 import DashBoard from './Components/DashBoard/DashBoard'
 import './App.css'
 const App = () => { 
   
   return (
-    <div className="app"> 
-      <DashBoard/>
-    </div>
+    <Router>
+      <div className="app">
+        <Switch>
+          <Route path="/(tag)?/:tag?" component={DashBoard} />
+        </Switch>
+      </div>
+    </Router>
 
   );
 }

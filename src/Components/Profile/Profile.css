@@ -3,21 +3,19 @@
     backdrop-filter: blur(3px);
     background-color: #ffffff61;
     width: 100%;
-    height: 100vh;
     position: fixed;
     z-index: 10;
-    padding-top: 2rem;
+    min-height: 100%;
+    max-height: 100%;
 }
 
 .profile-card{
-    flex-direction: column;
     overflow: hidden;
+    width: 37rem;
     background: white;
-    border-radius: 13px;
-
-    width: 46vh;
-    height: 70%;
-    position: relative;
+    border-radius: 12px;
+    display: grid !important;
+    height: 70vh;
 
     -webkit-box-shadow: 0 10px 6px -6px #303030;
     -moz-box-shadow: 0 10px 6px -6px #3e3535;
@@ -29,22 +27,20 @@
     height: 100%;
 
 }
+.profile-img {
+    grid-column: 1 / 2;
+    grid-row: 1;
+    padding: 0rem 1rem 0px 1rem;
+}
 .profile-img img{
-    width: 10rem;
     border-radius: 54%;
     overflow: hidden;
-    height: 10rem;
+    height: 60%;
 }
 
-.profile-img{
-    border-bottom: solid 1px #eaeaea;
-    height: 50%;
-    width: 100%;
-}
 .profile-info{
-    width: 100%;
-    padding-top: 1rem;
-    height: 35%;
+    grid-column: 2 / 4;
+    grid-row: 1;
 }
 .profile-info>div{
     display: flex;
@@ -55,6 +51,10 @@
     display: flex;
     align-self: center;
     margin-right: 0.6rem;
+}
+.profile-buttons{
+    grid-column: 1 / 4;
+    grid-row: 3;
 }
 .close-button2{
     top: 6px;
@@ -70,3 +70,26 @@
     cursor: pointer;
     text-align: center;
 }
+.profile-posts{
+    grid-column: 1 / 4;
+    grid-row: 2;
+}
+.user-posts{
+    flex-wrap: wrap;
+    display: flex;
+    height: 35vh;
+    width: 101%;
+    overflow: auto;
+
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.user-posts img {
+    height: 22vh;
+    width: 33%;
+    object-fit: cover;
+}
+.user-posts::-webkit-scrollbar {
+    display: none;
+  }
+  

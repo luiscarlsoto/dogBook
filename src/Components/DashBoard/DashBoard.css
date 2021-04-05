@@ -3,10 +3,12 @@
     display: flex;
     flex-wrap: wrap;
     position: absolute;
-    min-width: 100vw;
-
+    width: 100vw;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }
-.dashboard.modal-open{
-    max-height: 100vh;
-    overflow: hidden;
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }

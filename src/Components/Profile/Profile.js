@@ -17,7 +17,7 @@ const Profile = (props) => {
       }    
     useEffect(() => {
         getPhotos()
-      });
+      },[]);// eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <div className="content-profile background-blur center">

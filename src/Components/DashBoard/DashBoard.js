@@ -45,6 +45,8 @@ const DashBoard = (props) => {
         } 
     }    
     const getData = async () =>{
+      console.log('asdsad')
+
         setLoading(true)
         try{
           let response =  await getPost()
@@ -56,16 +58,18 @@ const DashBoard = (props) => {
             setLoading(false);
           }
       }    
-      useEffect(() => {getData()}, []);
+      useEffect(() => {getData()}, [setData]);
       useEffect(() => {searchTag()}, [props.match.params.tag]);// eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <div className="dashboard">
             <NavBar/>
-
-             {loading && <Loading/> }
-             {modalProfile ? <Profile closeModal={closeModal} {...dataProfile}/> : null}
-             {data.map(post =>(<Post key={data.id} showProfile={showProfile} searchTag={searchTag} {...post}/>))}
+            <div className="container">
+              {console.log(data)}
+              {loading && <Loading/> }
+              {modalProfile ? <Profile closeModal={closeModal} {...dataProfile}/> : null}
+              {data.map(post =>(<Post key={data.id} showProfile={showProfile} searchTag={searchTag} {...post}/>))}
+            </div>
         </div>
 )}
 

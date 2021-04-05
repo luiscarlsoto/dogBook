@@ -1,13 +1,12 @@
 .post{
-    margin: 1rem;
+    border-top: solid 1px #e5e5e5;
+    /* margin: 1rem; */
     display: flex;
-    width: 24rem;
-    border-radius: 11px;
+    /* border-radius: 11px; */
     background-color: white;
     flex-direction: column;
     padding-bottom: 1rem;
-    -webkit-box-shadow: -4px 8px 21px -6px rgba(0,0,0,0.81); 
-    box-shadow: -4px 8px 21px -6px rgba(0,0,0,0.81);
+    /* box-shadow: -4px 8px 21px -6px rgb(0 0 0 / 81%); */
 }
 .post-header{
     display: flex;
@@ -44,8 +43,6 @@
 }
 .post-img-likes{
     font-weight: bold;
-}
-.post-body{
 }
 .post-buttons{
     display: flex;
@@ -95,3 +92,11 @@ a>svg{
 .liked{
     color: red
 }
+@media only screen and (min-width: 600px) {
+    .post{
+        width: 25rem;
+        margin: 1rem; 
+        border-radius: 11px; 
+        box-shadow: -4px 8px 21px -6px rgb(0 0 0 / 81%); 
+    }
+  }

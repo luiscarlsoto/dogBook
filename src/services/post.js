@@ -1,17 +1,35 @@
 import axios from 'axios'
 
 const server = process.env.REACT_APP_URL_SERVER || 'https://dummyapi.io/data/api';
-const headers = {headers: { 'app-id': '606a64d7361f689bcec8838b' }}
+const headers = {headers: { 'app-id': '606a72e16f9ea3adb4b5a8c5' }}
 
 export const getPost = async() =>{
-    const response = await axios.get(`${server}/post`,headers)
-    return response.data.data
+    console.log('getPost')
+    try {
+        const {data} = await axios.get(`${server}/post`,headers)
+        return data.data
+    } catch (error) {
+        console.log(error)
+        return error.response
+    }
 }
 export const getPostTag = async(tag) =>{
-    const response = await axios.get(`${server}/tag/${tag}/post`, headers)
-    return response.data.data
+    console.log('getTag')
+    try {
+        const {data} = await axios.get(`${server}/tag/${tag}/post`, headers)
+        return data.data
+    } catch (error) {
+        console.log(error)
+        return error.response
+    }
 }
 export const getPostComments = async(postId) =>{
-    const response = await axios.get(`${server}/post/${postId}/comment`,headers)
-    return response.data.data
+    console.log('postId')
+    try {
+        const {data} = await axios.get(`${server}/post/${postId}/comment`,headers)
+        return data.data
+    } catch (error) {
+        console.log(error)
+        return error.response
+    }
 }

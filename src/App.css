@@ -5,7 +5,13 @@
 body{
     overflow-y: overlay;
 }
-
+*:focus{
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
 .app{
     background: #f4f4f4;
     font-family: system-ui;
@@ -25,3 +31,5 @@ img{
     background: url(https://upload.wikimedia.org/wikipedia/commons/4/42/Loading.gif) no-repeat center;
 
 }
+
+  

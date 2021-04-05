@@ -12,6 +12,10 @@
     padding-left: 3rem;
     align-items: center;
 }
+.navbar a{
+    color: black;
+    text-decoration: none;
+}
 .navbar h2{
     cursor: pointer;
 }

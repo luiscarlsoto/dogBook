@@ -33,8 +33,8 @@ const DashBoard = (props) => {
       document.body.style.overflowY = 'overlay'
     }
     const searchTag = async() =>{
-      setLoading(true)
       if(props.match.params.tag !== undefined){ 
+      setLoading(true)
         try{
           let response =  await getPostTag(props.match.params.tag)
           setData(response)
@@ -44,6 +44,8 @@ const DashBoard = (props) => {
           finally{
             setLoading(false);
         }
+      } else {
+        getData()
       } 
     }    
     const getData = async () =>{

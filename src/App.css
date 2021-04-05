@@ -29,7 +29,13 @@ body{
 }
 img{
     background: url(https://upload.wikimedia.org/wikipedia/commons/4/42/Loading.gif) no-repeat center;
-
+}
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
   

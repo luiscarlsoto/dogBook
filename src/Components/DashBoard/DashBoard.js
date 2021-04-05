@@ -42,7 +42,7 @@ const DashBoard = (props) => {
       }
         finally{
           setLoading(false);
-        }
+        } 
     }    
     const getData = async () =>{
         setLoading(true)

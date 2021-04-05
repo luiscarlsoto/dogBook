@@ -34,6 +34,7 @@ const DashBoard = (props) => {
     }
     const searchTag = async() =>{
       setLoading(true)
+        if(!props.match.params.tag === ""){
       try{
         let response =  await getPostTag(props.match.params.tag)
         setData(response)
@@ -42,23 +43,25 @@ const DashBoard = (props) => {
       }
         finally{
           setLoading(false);
-        } 
+        }
+      } 
     }    
     const getData = async () =>{
-      console.log('asdsad')
-
+      try{
         setLoading(true)
-        try{
-          let response =  await getPost()
-          setData(response)
-        } catch(error) {
-          console.error(error)
+        let response =  await getPost()
+        setData(response)
+      } catch(error) {
+        console.error(error)
+      }
+        finally{
+          setLoading(false);
         }
-          finally{
-            setLoading(false);
-          }
-      }    
-      useEffect(() => {getData()}, [setData]);
+    }    
+    useEffect(() => {
+      console.log("Sucede")
+    getData()
+    }, []);
       useEffect(() => {searchTag()}, [props.match.params.tag]);// eslint-disable-line react-hooks/exhaustive-deps
 
     return (

@@ -34,15 +34,15 @@ const DashBoard = (props) => {
     }
     const searchTag = async() =>{
       setLoading(true)
-        if(!props.match.params.tag === ""){
-      try{
-        let response =  await getPostTag(props.match.params.tag)
-        setData(response)
-      } catch(error) {
-        console.error(error)
-      }
-        finally{
-          setLoading(false);
+      if(props.match.params.tag !== undefined){ 
+        try{
+          let response =  await getPostTag(props.match.params.tag)
+          setData(response)
+        } catch(error) {
+          console.error(error)
+        }
+          finally{
+            setLoading(false);
         }
       } 
     }    
@@ -59,19 +59,19 @@ const DashBoard = (props) => {
         }
     }    
     useEffect(() => {
-      console.log("Sucede")
     getData()
     }, []);
-      useEffect(() => {searchTag()}, [props.match.params.tag]);// eslint-disable-line react-hooks/exhaustive-deps
+      useEffect(() => {
+        searchTag()
+      }, [props.match.params.tag]);// eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <div className="dashboard">
             <NavBar/>
             <div className="container">
-              {console.log(data)}
               {loading && <Loading/> }
               {modalProfile ? <Profile closeModal={closeModal} {...dataProfile}/> : null}
-              {data.map(post =>(<Post key={data.id} showProfile={showProfile} searchTag={searchTag} {...post}/>))}
+              {data.map(post =>(<Post key={post.id} showProfile={showProfile} searchTag={searchTag} {...post}/>))}
             </div>
         </div>
 )}

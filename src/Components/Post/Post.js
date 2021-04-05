@@ -44,7 +44,7 @@ const Post = (props) => {
                     </div>
                     <div className="post-tags">
                         {props.tags.map(tag =>(
-                            <Link onClick={() => props.searchTag(tag)} to={`/tag/${tag}`} key={tag} className="tag">#{tag}</Link>
+                            <Link to={`/tag/${tag}`} key={tag} className="tag">#{tag}</Link>
                         ))}
                     </div>
                 </div>

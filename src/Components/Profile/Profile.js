@@ -45,7 +45,7 @@ const Profile = (props) => {
                     </div>
                     <div className="profile-posts">
                         <div className="user-posts">
-                            {photos.map(photo => (<img alt={photo.id} src={photo.image}/>))}
+                            {photos.map(photo => (<img key={photo.id} alt={photo.id} src={photo.image}/>))}
                         </div>
                     </div>
                     <div className="profile-buttons">

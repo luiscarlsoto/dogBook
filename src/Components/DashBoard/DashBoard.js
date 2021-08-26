@@ -73,7 +73,7 @@ const DashBoard = (props) => {
             <div className="container">
               {loading && <Loading/> }
               {modalProfile ? <Profile closeModal={closeModal} {...dataProfile}/> : null}
-              {data.map(post =>(<Post key={post.id} showProfile={showProfile} searchTag={searchTag} {...post}/>))}
+              {data?.map(post =>(<Post key={post.id} showProfile={showProfile} searchTag={searchTag} {...post}/>))}
             </div>
         </div>
 )}

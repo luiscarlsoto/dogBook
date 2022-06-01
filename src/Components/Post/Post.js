@@ -32,7 +32,7 @@ const Post = (props) => {
                     <img alt={props.id} src={props.image}/>
                     <div className="post-buttons">
                         <div onClick={() => handleLikeButton()}>{liked ? <FaHeart className="liked"/> : <FaRegHeart/>}</div>
-                        <div><FaRegComment/></div>
+                        {/* <div><FaRegComment/></div> */}
                     </div>
                 </div>
                 
